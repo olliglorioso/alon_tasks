@@ -6,8 +6,7 @@ using namespace std;
 
 int main() {
     int n; 
-    cout << "Input: \n"; // Type a number and press enter
-    cin >> n; // Get user input from the keyboard
+    cin >> n; 
     vector<int> nums;
     nums.push_back(n);
     while (n != 1) {
@@ -18,7 +17,6 @@ int main() {
         }
         nums.push_back(n);
     }
-    cout << "Output: \n";
     for_each(nums.begin(), nums.end(),
              [](const auto & elem){
                 cout<<elem<<" "; 
