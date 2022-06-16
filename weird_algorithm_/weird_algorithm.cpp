@@ -5,13 +5,11 @@
 using namespace std;
 
 int main() {
-    int n; 
+    long long n; 
     cin >> n; 
     vector<int> nums;
     nums.push_back(n);
-    while (n != 1 && n > 0) {
-        cout << n;
-        cout << "\n";
+    while (n != 1) {
         if (n % 2 == 0) {
             n = n / 2;
         } else {
