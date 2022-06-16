@@ -1,13 +1,15 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include "BigInt.hpp"
 
 using namespace std;
 
 int main() {
-    long long n; 
-    cin >> n; 
-    vector<int> nums;
+    int k; 
+    cin >> k; 
+    BigInt n = k;
+    vector<BigInt> nums;
     nums.push_back(n);
     while (n != 1) {
         if (n % 2 == 0) {
