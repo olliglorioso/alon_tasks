@@ -34,16 +34,16 @@ int main() {
             {
                 a[i] += 1;
                 one_move = true;
+                moves_amount += 1;
             }
         }
-        if (one_move == true)
+        cout << a << endl;
+        if (one_move != true)
         {
-            moves_amount += 1;
-            one_move = false;
-        } else {
             break;
         }
+        one_move = false;
     }
-    // cout << a << endl;
+    cout << a << endl;
     cout << moves_amount;
 }
