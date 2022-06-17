@@ -37,13 +37,11 @@ int main() {
                 moves_amount += 1;
             }
         }
-        cout << a << endl;
         if (one_move != true)
         {
             break;
         }
         one_move = false;
     }
-    // cout << a << endl;
     cout << moves_amount;
 }
