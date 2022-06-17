@@ -44,6 +44,6 @@ int main() {
         }
         one_move = false;
     }
-    cout << a << endl;
+    // cout << a << endl;
     cout << moves_amount;
 }
