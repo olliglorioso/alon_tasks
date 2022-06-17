@@ -30,7 +30,7 @@ int main() {
     while (true)
     {
         for (size_t i = 0; i < a.size(); i++){
-            if (a[i] <= a[i - 1])
+            if (a[i] < a[i - 1])
             {
                 a[i] += 1;
                 one_move = true;
