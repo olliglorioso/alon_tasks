@@ -34,14 +34,13 @@ int main() {
     while (true)
     {
         a = b;
-        for (int64_t i = 0; i < a.size(); i++) {
+        for (size_t i = 0; i < a.size(); i++) {
             if (a[i] == biggest_num + 1) {
                 int64_t num = a[i];
                 biggest_num = num;
                 b.erase(remove(b.begin(), b.end(), a[i]), b.end());
             }
         }
-        cout << "a list " << a << " b list " << b << endl;
         if (a.size() == 0) {
             break;
         }
