@@ -31,16 +31,18 @@ int main() {
     {
         for (size_t i = 0; i < a.size(); i++) {
             if (a[i] == biggest_num + 1) {
-                biggest_num = a[i];
+                int num = a[i];
                 a.erase(a.begin() + i);
+                biggest_num = num;
             }
         }
-        moves_amount += 1;
         if (a.size() == 0) {
             break;
         }
+        // cout << a << " moves amount: " << moves_amount << endl;
+        moves_amount += 1;
     }   
     
     
-    cout << moves_amount - 1;
+    cout << moves_amount;
 }
