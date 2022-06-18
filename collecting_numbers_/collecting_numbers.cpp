@@ -23,7 +23,7 @@ int main() {
     cin >> n;
     vector<int64_t> a;
     for (int64_t i = 1; i <= n; i++) {
-        int x;
+        int64_t x;
         cin >> x;
         a.push_back(x);
     }
@@ -34,14 +34,14 @@ int main() {
     while (true)
     {
         a = b;
-        for (size_t i = 0; i < a.size(); i++) {
+        for (int64_t i = 0; i < a.size(); i++) {
             if (a[i] == biggest_num + 1) {
-                int num = a[i];
+                int64_t num = a[i];
                 biggest_num = num;
                 b.erase(remove(b.begin(), b.end(), a[i]), b.end());
             }
         }
-        // cout << biggest_num << " thast was biggest num, this is the list " << a << endl;
+        cout << "a list " << a << " b list " << b << endl;
         if (a.size() == 0) {
             break;
         }
