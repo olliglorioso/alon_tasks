@@ -30,7 +30,8 @@ int main() {
     while (true)
     {
         for (size_t i = 0; i < a.size(); i++) {
-            if (a[i] > biggest_num) {
+            if (a[i] == biggest_num + 1) {
+                biggest_num = a[i];
                 a.erase(a.begin() + i);
             }
         }
@@ -41,5 +42,5 @@ int main() {
     }   
     
     
-    cout << moves_amount;
+    cout << moves_amount - 1;
 }
