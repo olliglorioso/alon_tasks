@@ -1,8 +1,6 @@
-#include <string>
-#include <iterator>
 #include <vector>
 #include <algorithm>
-
+#include <iterator>
 #include <iostream>
 using namespace std;
 
@@ -28,26 +26,16 @@ int main() {
         a.push_back(x);
     }
 
-    vector<int64_t> b = a;
-    int64_t moves_amount = 0;
-    int64_t biggest_num = 0;
-    while (true)
-    {
-        a = b;
-        for (size_t i = 0; i < a.size(); i++) {
-            if (a[i] == biggest_num + 1) {
-                int64_t num = a[i];
-                biggest_num = num;
-                b.erase(remove(b.begin(), b.end(), a[i]), b.end());
-            }
+    vector<int64_t> b = {0};
+    for (size_t i = 0; i < a.size(); i++) {
+        int64_t prev_val = a[i] - 1;
+        if (count(b.begin(), b.end(), prev_val) != 0) {
+            // find the index of prev_val
+            size_t index = distance(b.begin(), find(b.begin(), b.end(), prev_val));
+            b[index]++;
+        } else {
+            b.push_back(a[i]);
         }
-        if (a.size() == 0) {
-            break;
-        }
-        // cout << a << " moves amount: " << moves_amount << endl;
-        moves_amount += 1;
-    }   
-    
-    
-    cout << moves_amount;
+    }
+    cout << b.size() << endl;
 }
