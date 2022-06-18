@@ -29,12 +29,14 @@ int main() {
     vector<int64_t> b = {0};
     for (size_t i = 0; i < a.size(); i++) {
         int64_t prev_val = a[i] - 1;
-        if (count(b.begin(), b.end(), prev_val) != 0) {
-            // find the index of prev_val
-            size_t index = distance(b.begin(), find(b.begin(), b.end(), prev_val));
-            b[index]++;
-        } else {
+        size_t index = distance(b.begin(), find(b.begin(), b.end(), prev_val));
+        // if there is no previous value, then we add it to the end of the vector
+        if (index == b.size()) {
             b.push_back(a[i]);
+        }
+        // if there is a previous value, then we insert it at the right position
+        else {
+            b[index]++;
         }
     }
     cout << b.size() << endl;
