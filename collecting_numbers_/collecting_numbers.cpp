@@ -1,6 +1,8 @@
 #include <string>
 #include <iterator>
 #include <vector>
+#include <algorithm>
+
 #include <iostream>
 using namespace std;
 
@@ -25,17 +27,21 @@ int main() {
         cin >> x;
         a.push_back(x);
     }
+
+    vector<int64_t> b = a;
     int64_t moves_amount = 0;
     int64_t biggest_num = 0;
     while (true)
     {
+        a = b;
         for (size_t i = 0; i < a.size(); i++) {
             if (a[i] == biggest_num + 1) {
                 int num = a[i];
-                a.erase(a.begin() + i);
                 biggest_num = num;
+                b.erase(remove(b.begin(), b.end(), a[i]), b.end());
             }
         }
+        // cout << biggest_num << " thast was biggest num, this is the list " << a << endl;
         if (a.size() == 0) {
             break;
         }
