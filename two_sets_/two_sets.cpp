@@ -27,6 +27,7 @@ int main() {
         return 0;
     }
     int64_t answer = sum / 2;
+    // Lisätään ekaan listaan lukuja niin kauan kunnes vastausarvo on saavuttanut nollan.
     for (int64_t i = 1; i <= n; i++) {
         
         if (i <= answer) {
