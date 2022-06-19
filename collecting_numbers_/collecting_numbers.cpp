@@ -20,18 +20,18 @@ ostream& operator<<(ostream& os,
 int main() {
     int n;
     cin >> n;
-    vector<int> a;
+    vector<int> a(n+1), b(n + 1);
     for (int i = 1; i <= n; i++) {
-        int x;
-        cin >> x;
-        a.push_back(x);
+        cin >> b[i];
+        a[b[i]] = i;
     }
 
-    int totaliters = 1;
+
+    int total_iters = 1;
     for (int i = 2; i <= n; i++) {
-        if (a[i] < a[i-1]) {
-            totaliters += 1;
+        if (a[i] <= a[i-1]) {
+            total_iters += 1;
         }
     }
-    cout << totaliters << endl;
+    cout << total_iters << endl;
 }
