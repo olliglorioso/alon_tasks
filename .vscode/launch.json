@@ -10,7 +10,7 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "args": ["<", "${workspaceFolder}/collecting_numbers_/test_input.txt"],
+            "args": [],
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
