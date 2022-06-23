@@ -23,7 +23,7 @@ int main() {
     int watched_movies = 0;
     int current_time = 0;
     for (int i = 0; i < movie_amount; i++) {
-        if (times[i].second > current_time) {
+        if (times[i].second >= current_time) {
             watched_movies++;
             current_time = times[i].first;
         }
