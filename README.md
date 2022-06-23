@@ -11,3 +11,8 @@ Links for the tasks (these links will contain information about how to test the 
 1. [weird algorithm](https://cses.fi/alon/task/1068)
 2. [increasing array](https://cses.fi/alon/task/1094)
 3. [two sets](https://cses.fi/alon/task/1092)
+
+# Notes
+Test file for inputs:
+1. Add the txt-file inside the task folder.
+2. Edit the args in the launch.json to be the following: ```"args": ["<", "${workspaceFolder}/${____FOLDER_NAME_____}/test_input.txt"]```
