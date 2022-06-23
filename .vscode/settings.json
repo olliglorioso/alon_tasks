@@ -49,7 +49,10 @@
         "compare": "cpp",
         "concepts": "cpp",
         "ranges": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "ctime": "cpp",
+        "map": "cpp",
+        "ratio": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
