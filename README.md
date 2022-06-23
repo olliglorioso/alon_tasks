@@ -11,6 +11,11 @@ Links for the tasks (these links will contain information about how to test the 
 1. [weird algorithm](https://cses.fi/alon/task/1068)
 2. [increasing array](https://cses.fi/alon/task/1094)
 3. [two sets](https://cses.fi/alon/task/1092)
+4. [collecting numbers](https://cses.fi/alon/task/2216)
+5. [creating strings](https://cses.fi/alon/task/1622)
+6. [movie festival](https://cses.fi/alon/task/1629)
+7. [missing coin sum](https://cses.fi/alon/task/2183)
+8. [jospehus problem I](https://cses.fi/alon/task/2162)
 
 # Notes
 Test file for inputs:
