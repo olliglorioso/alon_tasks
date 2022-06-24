@@ -53,7 +53,8 @@
         "ctime": "cpp",
         "map": "cpp",
         "ratio": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "queue": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

@@ -3,10 +3,10 @@
 #include <iterator>
 #include <iostream>
 #include <chrono>
-#include <map>
-#include <queue>
+#include <set>
+#include <chrono>
 using namespace std;
-
+using namespace std::chrono;
 
 
 void print_vector(vector<int> vec) {
@@ -18,27 +18,17 @@ void print_vector(vector<int> vec) {
     cout << endl;
 }
 
-int closest(std::vector<int> const& vec, int value) {
-    auto const it = upper_bound(vec.begin(), vec.end(), value);
-    int res = it - vec.begin();
-    if (res == 0) {
-        return -1;
-    } else {
-        return it - vec.begin();
-    }
-}
-
 int main() {
     int n_cust, n_ticket;
     cin >> n_ticket >> n_cust;
 
     vector<int> customers;
-    vector<int> tickets;
+    multiset<int, greater<int>> tickets;
     
     for (int i = 1; i <= n_ticket; i++) {
         int a;
         cin >> a;
-        tickets.push_back(a);
+        tickets.insert(a);
     }
 
     for (int i = 1; i <= n_cust; i++) {
@@ -46,16 +36,23 @@ int main() {
         cin >> a;
         customers.push_back(a);
     }
+    // sort(tickets.begin(), tickets.end());
 
-    sort(tickets.begin(), tickets.end());
-
+    // auto start = high_resolution_clock::now();
     for (int i = 0; i < n_cust; i++) {
-        int res = closest(tickets, customers[i]);
-        if (res == -1) {
-            cout << -1 << endl;
+        const int value = customers[i];
+        auto it = tickets.lower_bound(value);
+        if (it != tickets.end()) {
+            auto loc = it--;
+            cout << *loc << endl;
+            tickets.erase(loc);
+
         } else {
-            cout << tickets[res - 1] << endl;
-            tickets.erase(tickets.begin() + res - 1);
+            cout << -1 << endl;
         }
     }
+    // auto stop = high_resolution_clock::now();
+    // auto duration = duration_cast<microseconds>(stop - start);
+ 
+    // cout << duration.count() << endl;
 }
