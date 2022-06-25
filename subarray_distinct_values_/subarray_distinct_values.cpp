@@ -3,7 +3,9 @@
 #include <iterator>
 #include <iostream>
 #include <unordered_map>
+#include <chrono>
 using namespace std;
+using namespace std::chrono;
 
 void print_vectors(vector<vector<int64_t>> vec) {
     cout << "vector elements: " << endl;
@@ -22,6 +24,7 @@ void print_vector(vector<int64_t> vec) {
 }
 
 int main() {
+    auto start = high_resolution_clock::now();
     int64_t n, d_elems; 
     cin >> n >> d_elems;
     vector<int64_t> vals;
@@ -50,7 +53,9 @@ int main() {
         count += right_idx - left_idx + 1;
         right_idx++;
     }
-
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    // cout << duration.count() << endl;
     cout << count << endl;
 }
 

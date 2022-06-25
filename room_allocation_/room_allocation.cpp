@@ -39,17 +39,18 @@ int main() {
     }
     sort(customers.begin(), customers.end());
     // rooms[n] == 0 if room is free. (room_number: ())
-    map<int, int> rooms;
+    map<int, pair<int, int>> rooms;
     int current_time = 0;
     int k = 1;
     int rooms_needed = 0;
     vector<int> rooms_reserved;
+    
 
     for (int i = 0; i < n_customers; i++) {
         if (customers[i].second == 0) {
             bool room_was_free = false;
             for (int s = 1; s <= rooms.size(); s++) {
-                if (rooms[s] == 0) {
+                if (rooms[s].first == 0) {
                     rooms[s] = 1;
                     rooms_reserved.push_back(s);
                     break;
@@ -63,7 +64,7 @@ int main() {
             }
         } else if (customers[i].second == 1) {
             for (int v = 1; v <= rooms.size(); v++) {
-                // if (rooms[v]=);
+                if (rooms[v]=);
             }
         }
     }
