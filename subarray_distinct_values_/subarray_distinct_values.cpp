@@ -7,21 +7,21 @@
 using namespace std;
 using namespace std::chrono;
 
-void print_vectors(vector<vector<int64_t>> vec) {
-    cout << "vector elements: " << endl;
-    for (int64_t i = 0; i < vec.size(); i++) {
-        cout << vec[i][0] << " and " << vec[i][1] << endl;
-    }
-}
+// void print_vectors(vector<vector<int64_t>> vec) {
+//     cout << "vector elements: " << endl;
+//     for (int64_t i = 0; i < vec.size(); i++) {
+//         cout << vec[i][0] << " and " << vec[i][1] << endl;
+//     }
+// }
 
-void print_vector(vector<int64_t> vec) {
-    cout << endl;
-    cout << "vector elements : ";
-    for (int64_t i = 0; i < vec.size(); i++) {
-        cout << vec[i] << " ";
-    }
-    cout << endl;
-}
+// void print_vector(vector<int64_t> vec) {
+//     cout << endl;
+//     cout << "vector elements : ";
+//     for (int64_t i = 0; i < vec.size(); i++) {
+//         cout << vec[i] << " ";
+//     }
+//     cout << endl;
+// }
 
 int main() {
     auto start = high_resolution_clock::now();
