@@ -5,43 +5,43 @@
 #include <unordered_map>
 using namespace std;
 
-void print_vectors(vector<vector<int>> vec) {
+void print_vectors(vector<vector<int64_t>> vec) {
     cout << "vector elements: " << endl;
-    for (int i = 0; i < vec.size(); i++) {
+    for (int64_t i = 0; i < vec.size(); i++) {
         cout << vec[i][0] << " and " << vec[i][1] << endl;
     }
 }
 
-void print_vector(vector<int> vec) {
+void print_vector(vector<int64_t> vec) {
     cout << endl;
     cout << "vector elements : ";
-    for (int i = 0; i < vec.size(); i++) {
+    for (int64_t i = 0; i < vec.size(); i++) {
         cout << vec[i] << " ";
     }
     cout << endl;
 }
 
 int main() {
-    int n, d_elems; 
+    int64_t n, d_elems; 
     cin >> n >> d_elems;
-    vector<int> vals;
-    for (int i = 0; i < n; i++) {
-        int a;
+    vector<int64_t> vals;
+    for (int64_t i = 0; i < n; i++) {
+        int64_t a;
         cin >> a;
         vals.push_back(a);
     }
-    int count = 0;
-    int left_idx = 0;
-    int right_idx = 0;
-    unordered_map<int, int> dist_elems;
+    int64_t count = 0;
+    int64_t left_idx = 0;
+    int64_t right_idx = 0;
+    unordered_map<int64_t, int64_t> dist_elems;
 
     while (right_idx < n) {
-        int rval = vals[right_idx];
+        int64_t rval = vals[right_idx];
         dist_elems[rval] += 1;
         
         while (dist_elems.size() > d_elems) {
-            int lval = vals[left_idx];
-            dist_elems[lval]--;
+            int64_t lval = vals[left_idx];
+            dist_elems[lval] -= 1;
             if (dist_elems[lval] == 0) {
                 dist_elems.erase(lval);
             }
