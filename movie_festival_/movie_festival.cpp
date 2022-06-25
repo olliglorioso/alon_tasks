@@ -18,7 +18,7 @@ int main() {
         times.push_back(make_pair(end_time, start_time));
     }
  
-    sort (times.begin(), times.end());
+    sort(times.begin(), times.end());
     
     int watched_movies = 0;
     int current_time = 0;

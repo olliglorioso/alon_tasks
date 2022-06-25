@@ -36,9 +36,6 @@ int main() {
         cin >> a;
         customers.push_back(a);
     }
-    // sort(tickets.begin(), tickets.end());
-
-    // auto start = high_resolution_clock::now();
     for (int i = 0; i < n_cust; i++) {
         const int value = customers[i];
         auto it = tickets.lower_bound(value);
@@ -51,8 +48,4 @@ int main() {
             cout << -1 << endl;
         }
     }
-    // auto stop = high_resolution_clock::now();
-    // auto duration = duration_cast<microseconds>(stop - start);
- 
-    // cout << duration.count() << endl;
 }

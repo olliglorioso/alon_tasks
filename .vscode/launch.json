@@ -10,7 +10,7 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "args": ["<", "${workspaceFolder}/concert_tickets_/test_input.txt"],
+            "args": ["<", "${workspaceFolder}/subarray_distinct_values_/test_input.txt"],
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
