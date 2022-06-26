@@ -18,7 +18,6 @@ void print_vectors(vector<tuple<int, int, int>> vec) {
 
 void print_vector(vector<int> vec) {
     cout << endl;
-    cout << "vector elements : ";
     for (int i = 0; i < vec.size(); i++) {
         cout << vec[i] << " ";
     }
@@ -46,26 +45,38 @@ int main() {
     int current_time = 0;
     int rooms_needed = 0;
     vector<int> rooms_reserved;
-    queue<int> freeRooms;
+    queue<pair<int, int>> freeRooms;   // First one is day and second one is room number.
+    map<int, int> room_for_cust;
+    int k = 1;
     
 
     for (int i = 0; i < customers.size(); i++) {
         int custNro = get<2>(customers[i]);
-        if (get<1>(customers[i]) == 0) {
-            if (freeRooms.size() > 0) {
-                int room_to_reserve = freeRooms.front();
+        int isDeparture = get<1>(customers[i]);
+        int day = get<0>(customers[i]);
+        
+        if (isDeparture == 0) {
+            pair<int, int> first_available_room = freeRooms.front();
+            if (first_available_room.first != 0 & first_available_room.first < day) {
                 freeRooms.pop();
-                rooms_reserved.push_back(room_to_reserve);
+                rooms_reserved.push_back(first_available_room.second);
+                room_for_cust[custNro] = first_available_room.second;
             } else {
-                rooms_reserved.push_back(custNro);
+                int roomNro = k;
+                rooms_reserved.push_back(roomNro);
+                room_for_cust[custNro] = roomNro;
                 rooms_needed++;
+                k++;
             }
-        } if (get<1>(customers[i]) == 1) {
-            freeRooms.push(custNro);
+        } if (isDeparture == 1) {
+            
+            int roomNro = room_for_cust[custNro];
+            freeRooms.push(make_pair(day, roomNro));
         }
     }
 
-    print_vector(rooms_reserved);
+    
     cout << rooms_needed << endl;
+    print_vector(rooms_reserved);
 }
 
