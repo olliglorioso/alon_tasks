@@ -17,7 +17,6 @@ void print_vectors(vector<tuple<int, int, int>> vec) {
 }
 
 void print_vector(vector<int> vec) {
-    cout << endl;
     for (int i = 0; i < vec.size(); i++) {
         cout << vec[i] << " ";
     }
@@ -54,6 +53,7 @@ int main() {
         int custNro = get<2>(customers[i]);
         int isDeparture = get<1>(customers[i]);
         int day = get<0>(customers[i]);
+        cout << "day is " << day << " and custnro is " << custNro << " and isdeparture is " << isDeparture << ", ";
         
         if (isDeparture == 0) {
             pair<int, int> first_available_room = freeRooms.front();
@@ -61,17 +61,20 @@ int main() {
                 freeRooms.pop();
                 rooms_reserved.push_back(first_available_room.second);
                 room_for_cust[custNro] = first_available_room.second;
+                cout << "and an existing room nro " << first_available_room.second << " booked." << endl;
             } else {
                 int roomNro = k;
                 rooms_reserved.push_back(roomNro);
                 room_for_cust[custNro] = roomNro;
                 rooms_needed++;
                 k++;
+                cout << "and a new room nro " << roomNro << " is booked." << endl;
             }
         } if (isDeparture == 1) {
             
             int roomNro = room_for_cust[custNro];
             freeRooms.push(make_pair(day, roomNro));
+            cout << "and room nro " << roomNro << " is left and added to the queue." << endl;
         }
     }
 
