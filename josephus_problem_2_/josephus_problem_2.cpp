@@ -10,22 +10,21 @@ using namespace std;
 
 queue<int> q;
 
-int print_every_second() {
+int print_every_second(int k) {
     if (q.size() == 0) {
         return 0;
     }
-    int front2 = q.front();
-    q.pop();
-    q.push(front2);
-    int front3 = q.front();
-    q.pop();
-    q.push(front3);
+    for (int i = 1; i <= k; i++) {
+        int fronttieri = q.front();
+        q.pop();
+        q.push(fronttieri);
+    }
     int front = q.front();
     q.pop();
     cout << front << " ";
     
     
-    print_every_second();
+    print_every_second(k);
 }
 
 int main() {
@@ -36,6 +35,6 @@ int main() {
         q.push(i);
     }
 
-    print_every_second();
+    print_every_second(k);
     return 0;
 }

@@ -10,7 +10,7 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "args": ["<", "${workspaceFolder}/josephus_problem_2_/test_input.txt"],
+            // "args": ["<", "${workspaceFolder}/josephus_problem_2_/test_input.txt"],
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
