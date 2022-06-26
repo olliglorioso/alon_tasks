@@ -17,7 +17,6 @@ void print_vectors(vector<tuple<int, int, int>> vec) {
 }
 
 void print_vector(vector<int> vec) {
-    cout << endl;
     for (int i = 0; i < vec.size(); i++) {
         cout << vec[i] << " ";
     }
