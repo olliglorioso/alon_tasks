@@ -10,6 +10,7 @@ using namespace std;
 
 queue<int32_t> q;
 bool isOver = false;
+int32_t originalK;
 
 int32_t print_every_second(int32_t k, int32_t curLen) {
     if (q.size() == 0) {
@@ -19,6 +20,8 @@ int32_t print_every_second(int32_t k, int32_t curLen) {
     if (isOver == true) {
         s = k % curLen;
         curLen -= 1;
+    } else {
+        s = originalK;
     }
 
     for (int32_t i = 1; i <= s; i++) {
@@ -36,6 +39,7 @@ int32_t print_every_second(int32_t k, int32_t curLen) {
 int main() {
     int32_t n, k;
     cin >> n >> k;
+    originalK = k;
 
     for (int32_t i = 1; i <= n; i++) {
         q.push(i);
