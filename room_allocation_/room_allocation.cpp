@@ -5,13 +5,14 @@
 #include <map>
 #include <chrono>
 #include <queue>
+#include <tuple>
 using namespace std;
 using namespace std::chrono;
 
-void print_vectors(vector<vector<int>> vec) {
+void print_vectors(vector<tuple<int, int, int>> vec) {
     cout << "vector elements: " << endl;
     for (int i = 0; i < vec.size(); i++) {
-        cout << vec[i][0] << " and " << vec[i][1] << endl;
+        cout << get<0>(vec[i]) << get<1>(vec[i]) << get<2>(vec[i]) << endl;
     }
 }
 
@@ -27,45 +28,40 @@ void print_vector(vector<int> vec) {
 int main() {
     int n_customers; 
     cin >> n_customers; 
-    vector<pair<int, int>> customers;
+    vector<tuple<int, int, int>> customers;   // First one is relevant time (arrival, departure), second one is 0 if arrival and 1 if departure, and third one is customer number.
     
+    int custNumber = 1;
     
+    // Collect the customer information via cin.
     for (int i = 0; i < n_customers;  i++) {
         int res_start, res_end;
         cin >> res_start >> res_end;
-        // 1 for departure and 0 for arrival.
-        customers.push_back(make_pair(res_start, 0));
-        customers.push_back(make_pair(res_end, 1));
+        customers.push_back(make_tuple(res_start, 0, custNumber));
+        customers.push_back(make_tuple(res_end, 1, custNumber));
+        custNumber++;
     }
+
     sort(customers.begin(), customers.end());
-    // rooms[n] == 0 if room is free. (room_number: ())
-    map<int, pair<int, int>> rooms;
+    
     int current_time = 0;
-    int k = 1;
     int rooms_needed = 0;
     vector<int> rooms_reserved;
+    queue<int> freeRooms;
     
 
-    for (int i = 0; i < n_customers; i++) {
-        if (customers[i].second == 0) {
-            bool room_was_free = false;
-            for (int s = 1; s <= rooms.size(); s++) {
-                if (rooms[s].first == 0) {
-                    rooms[s] = 1;
-                    rooms_reserved.push_back(s);
-                    break;
-                }
-            }
-            if (room_was_free == false) {
-                rooms[k] = 1;
-                rooms_reserved.push_back(k);
+    for (int i = 0; i < customers.size(); i++) {
+        int custNro = get<2>(customers[i]);
+        if (get<1>(customers[i]) == 0) {
+            if (freeRooms.size() > 0) {
+                int room_to_reserve = freeRooms.front();
+                freeRooms.pop();
+                rooms_reserved.push_back(room_to_reserve);
+            } else {
+                rooms_reserved.push_back(custNro);
                 rooms_needed++;
-                k++;
             }
-        } else if (customers[i].second == 1) {
-            for (int v = 1; v <= rooms.size(); v++) {
-                if (rooms[v]=);
-            }
+        } if (get<1>(customers[i]) == 1) {
+            freeRooms.push(custNro);
         }
     }
 
