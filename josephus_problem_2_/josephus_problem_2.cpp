@@ -7,61 +7,68 @@
 #include <queue>
 #include <tuple>
 using namespace std;
+#include <ext/pb_ds/assoc_container.hpp>
+using namespace __gnu_pbds;
 
-queue<int32_t> q;
+typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> indexed_set;
+queue<int> q;
 bool isOver = false;
-int32_t originalK;
-set<int> circle;
+int originalK;
+indexed_set que;
+int n, k;
 
-int32_t print_every_second(int32_t k) {
+int print_every_second(int k) {
     if (q.size() == 0) {
         return 0;
     }
 
-    for (int32_t i = 1; i <= k; i++) {
-        int32_t fronttieri = q.front();
+    for (int i = 1; i <= k; i++) {
+        int fronttieri = q.front();
         q.pop();
         q.push(fronttieri);
     }
-    int32_t front = q.front();
+    int front = q.front();
     q.pop();
     cout << front << " ";
     
     print_every_second(k);
 }
-
-int print_every_second_k_is_bigger(int k, int x) {
-    if (circle.size() == 0) {
+int rounds = 0;
+int print_every_second_k_is_bigger(int x) {
+    if (que.size() == 1) {
+        cout << *que.begin();
         return 0;
-    }
-    x = (x + k) % circle.size();
-    cout << x << " ";
-    circle.erase(x);
+    } 
+    x = (k + x) % que.size();
+    cout << "x on " << x << endl;
+    cout << *que.find_by_order(x) << endl;
+    que.erase(que.find_by_order(x));
     // for (int i = 1; i <= s; i++) {
-    //     int fronttieri = circle.front();
-    //     circle.pop();
-    //     circle.push(fronttieri);
+    //     int fronttieri = que.front();
+    //     que.pop();
+    //     que.push(fronttieri);
     // }
-    // int front = circle.front();
+    // int front = que.front();
     // q.pop();
     // cout << front << " ";
+    rounds++;
+    if (rounds < 5){
+        print_every_second_k_is_bigger(x);
+    }
     
-    print_every_second_k_is_bigger(k, x);
 }
 
 int main() {
-    int32_t n, k;
-    cin >> n >> k;
-    originalK = k;
-
     
+    cin >> n >> k;
     if (k > n) {
-        for (int32_t i = 1; i <= n; i++) {
-            circle.insert(i);
+        for (int i = 1; i <= n; i++) {
+            que.insert(i);
         }
-        print_every_second_k_is_bigger(k, 0);
+        
+        print_every_second_k_is_bigger(0);
     } else {
-        for (int32_t i = 1; i <= n; i++) {
+        for (int i = 1; i <= n; i++) {
             q.push(i);
         }
         print_every_second(k);
