@@ -6,7 +6,9 @@
 #include <chrono>
 #include <queue>
 #include <tuple>
+#include <chrono>
 using namespace std;
+using namespace std::chrono;
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace __gnu_pbds;
 
@@ -33,28 +35,16 @@ int print_every_second(int k) {
     
     print_every_second(k);
 }
-int rounds = 0;
 int print_every_second_k_is_bigger(int x) {
     if (que.size() == 1) {
         cout << *que.begin();
         return 0;
     } 
     x = (k + x) % que.size();
-    cout << "x on " << x << endl;
-    cout << *que.find_by_order(x) << endl;
-    que.erase(que.find_by_order(x));
-    // for (int i = 1; i <= s; i++) {
-    //     int fronttieri = que.front();
-    //     que.pop();
-    //     que.push(fronttieri);
-    // }
-    // int front = que.front();
-    // q.pop();
-    // cout << front << " ";
-    rounds++;
-    if (rounds < 5){
-        print_every_second_k_is_bigger(x);
-    }
+    auto idx = que.find_by_order(x);
+    cout << *idx << " ";
+    que.erase(idx);
+    print_every_second_k_is_bigger(x);
     
 }
 
@@ -62,11 +52,14 @@ int main() {
     
     cin >> n >> k;
     if (k > n) {
+        auto start = high_resolution_clock::now();
         for (int i = 1; i <= n; i++) {
             que.insert(i);
         }
         
         print_every_second_k_is_bigger(0);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<milliseconds>(stop - start);
     } else {
         for (int i = 1; i <= n; i++) {
             q.push(i);
