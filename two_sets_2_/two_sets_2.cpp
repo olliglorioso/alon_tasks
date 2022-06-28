@@ -52,4 +52,5 @@ int main() {
         }
     }
     cout << sums[n-1][answer] << endl;
+    return 0;
 }
