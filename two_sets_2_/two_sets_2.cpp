@@ -3,6 +3,7 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
 int check_if_eligible(int n) {
@@ -19,7 +20,7 @@ int check_if_eligible(int n) {
 int main() {
     int n;
     cin >> n;
-    int modulo = 10^9+7;
+    int modulo = pow(10, 9) + 7;
     int sum = check_if_eligible(n);
     if (sum == -1) return 0;
     int answer = sum / 2;
@@ -39,11 +40,14 @@ int main() {
             int notIncluded = sums[a-1][b];
             // 1. We included it, and thus
             int included = sums[a-1][b-a];
-            sums[a][b] = notIncluded;
-            // b-a is zero or more if there is a chance to take one more value to the sum. If it's less than zero we cant add any more values.
+            int total = notIncluded;
             if (b - a >= 0) {
-                (sums[a][b] += included) %= modulo;
+                total = included + notIncluded;
+                total %= modulo;
+            } else {
+                total %= modulo;
             }
+            sums[a][b] = total;
         }
     }
     cout << sums[n-1][answer];
