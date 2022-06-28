@@ -17,7 +17,7 @@ long long check_if_eligible(long long n) {
         return sum;
     }
 }
-
+vector<vector<long long>> sums;
 int main() {
     long long n;
     cin >> n;
@@ -31,7 +31,8 @@ int main() {
         numbers.push_back(i);
     }
 
-    vector<vector<long long>> sums(n,vector<long long>(answer+1,0));
+    
+    sums.resize(n,vector<long long>(answer+1,0));
     sums[0][0] = 1;
 
     for (long long a = 1; a < n; a++) {
