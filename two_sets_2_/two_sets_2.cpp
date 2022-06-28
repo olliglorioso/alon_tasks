@@ -5,6 +5,13 @@
 #include <algorithm>
 #include <bits/stdc++.h>
 using namespace std;
+#include <chrono>
+using namespace std::chrono;
+ 
+// Use auto keyword to avoid typing long
+// type definitions to get the timepoint
+// at this instant use function now()
+
 
 int check_if_eligible(int n) {
     // Lukujen 1...n summa voidaan laskea kaavalla (n*(n+1))/2. Jos summa on pariton, vastaus on NO.
@@ -20,6 +27,7 @@ int check_if_eligible(int n) {
 int main() {
     int n;
     cin >> n;
+    auto start = high_resolution_clock::now();
     int modulo = pow(10, 9) + 7;
     int sum = check_if_eligible(n);
     if (sum == -1) return 0;
@@ -50,5 +58,18 @@ int main() {
             sums[a][b] = total;
         }
     }
-    cout << sums[n-1][answer];
+    cout << sums[n-1][answer] << endl;
+    // After function call
+    auto stop = high_resolution_clock::now();
+    
+    // Subtract stop and start timepoints and
+    // cast it to required unit. Predefined units
+    // are nanoseconds, microseconds, milliseconds,
+    // seconds, minutes, hours. Use duration_cast()
+    // function.
+    auto duration = duration_cast<milliseconds>(stop - start);
+    
+    // To get the value of duration use the count()
+    // member function on the duration object
+    // cout << duration.count() << endl;
 }
