@@ -14,36 +14,15 @@ void print_vector(vector<long long> vec) {
 }
 
 bool is_good (long long num) {
-    long long numb = num;
-    vector<long long> numbs;
-    while (numb >= 10) {
-        int a = numb % 10;
-        numb = numb / 10;
-        numbs.push_back(a);
-    }
-    numbs.push_back(numb);
-    if (numbs.size() == 1) {
-        return true;
-    }
-    
-    for(int i = 0; i < numbs.size(); i++) {
-        if (i == 0) {
-            if (numbs[i] == numbs[i + 1]) {
-                return false;
-            } else {
-                continue;
-            }
-        }
-        if (i == (numbs.size() - 1)) {
-            if (numbs[i - 1] == numbs[i]) {
-                return false;
-            } else {
-                continue;
-            }
-        }
-        if (numbs[i] == numbs[i + 1] || numbs[i] == numbs[i - 1]) {
+    int prev = num % 10;
+    long long curr = num / 10;
+    while (curr) {
+        int curr2 = curr % 10;
+        if (curr2 == prev) {
             return false;
         }
+        prev = curr2;
+        curr /= 10;
     }
     return true;
 }
